@@ -33,10 +33,7 @@ COPY . /ros2_ws
 # Install all ROS dependencies defined in your source packages
 RUN rosdep install --from-paths src --ignore-src -r -y
 
-# Clean previous build artifacts, then build your workspace
-RUN rm -rf build/ install/ log/ && \
-    . /opt/ros/humble/setup.sh && 
-
+RUN source /opt/ros/humble/setup.sh
 RUN colcon build 
 
 # Source ROS 2 and workspace setup scripts in all bash shells
